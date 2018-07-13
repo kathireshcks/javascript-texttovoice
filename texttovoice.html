@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>IO Chat</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    </head>
+<body>
+    <div class="container">
+        <h3>Text to Speech</h3>
+        <textarea  class="form-control" id="text" ></textarea>
+		
+        <br>
+
+        <button type="button" class="btn btn-primary" id="speak">Speak</button>
+
+    </div>
+	
+    <script>
+        var text=document.querySelector('#text');
+        var speak=document.querySelector('#speak');
+
+        function speaknow(){
+            var speech=new SpeechSynthesisUtterance();
+            speech.rate=.7;
+            speech.pitch=1;
+            speech.volume=1;
+            speech.voice=speechSynthesis.getVoices()[0];
+            speech.text=text.value;
+
+            speechSynthesis.speak(speech);
+        }
+        speak.onclick=function(e){
+            e.preventDefault();
+            speaknow();
+        }
+    </script>
+</body>
+</html>
